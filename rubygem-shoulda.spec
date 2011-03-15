@@ -1,39 +1,54 @@
-%define	oname	shoulda
+# Generated from shoulda-2.11.3.gem by gem2rpm5 -*- rpm-spec -*-          
+%define	rbname	shoulda
 
 Summary:	Making tests easy on the fingers and eyes
-Name:		rubygem-%{oname}
+Name:		rubygem-%{rbname}
+
 Version:	2.11.3
-Release:	%mkrel 1
-License:	GPLv2
+Release:	2
 Group:		Development/Ruby
-URL:		http://rubygems.org/gems/%{oname}
-Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	ruby-RubyGems
-Requires:	ruby
+License:	GPLv2
+URL:		http://thoughtbot.com/community/
+Source0:	http://rubygems.org/gems/%{rbname}-%{version}.gem
+BuildRequires:	rubygems 
 BuildArch:	noarch
 
 %description
 Making tests easy on the fingers and eyes.
 
+%package	doc
+Summary:	Documentation for %{name}
+Group:		Books/Computer books
+Requires:	%{name} = %{EVRD}
+
+%description	doc
+Documents, RDoc & RI documentation for %{name}.
+
 %prep
+%setup -q
 
 %build
+%gem_build -f '(rails|test)/'
 
 %install
-rm -rf %{buildroot}
-gem install --local --install-dir %{buildroot}/%{ruby_gemdir} --force %{SOURCE0}
-
-chmod g-w,g+r,o+r -R %{buildroot}
+%gem_install
 
 %clean
 rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
-%doc %{ruby_gemdir}/doc/%{oname}-%{version}
-%{ruby_gemdir}/bin/convert_to_should_syntax
-%{ruby_gemdir}/cache/%{oname}-%{version}.gem
-%{ruby_gemdir}/gems/%{oname}-%{version}
-%{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
+%{_bindir}/convert_to_should_syntax
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/bin
+%{ruby_gemdir}/gems/%{rbname}-%{version}/bin/convert_to_should_syntax
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib
+%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/*
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/rails
+%{ruby_gemdir}/gems/%{rbname}-%{version}/rails/*.rb
+%{ruby_gemdir}/specifications/%{rbname}-%{version}.gemspec
 
+%files doc
+%doc %{ruby_gemdir}/gems/%{rbname}-%{version}/*.rdoc
+%doc %{ruby_gemdir}/doc/%{rbname}-%{version}
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/test
+%{ruby_gemdir}/gems/%{rbname}-%{version}/test/*
