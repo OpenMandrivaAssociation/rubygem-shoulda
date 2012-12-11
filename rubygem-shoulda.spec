@@ -52,3 +52,15 @@ rm -rf %{buildroot}
 %doc %{ruby_gemdir}/doc/%{rbname}-%{version}
 %dir %{ruby_gemdir}/gems/%{rbname}-%{version}/test
 %{ruby_gemdir}/gems/%{rbname}-%{version}/test/*
+
+
+%changelog
+* Tue Mar 15 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.11.3-2
++ Revision: 645141
+- regenerate spec with gem2rpm5
+
+* Fri Sep 17 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.11.3-1mdv2011.0
++ Revision: 579207
+- import rubygem-shoulda
+
+
