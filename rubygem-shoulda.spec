@@ -5,7 +5,7 @@ Summary:	Making tests easy on the fingers and eyes
 Name:		rubygem-%{rbname}
 
 Version:	2.11.3
-Release:	2
+Release:	3
 Group:		Development/Ruby
 License:	GPLv2
 URL:		http://thoughtbot.com/community/
