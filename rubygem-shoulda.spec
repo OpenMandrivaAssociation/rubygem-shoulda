@@ -8,7 +8,7 @@ Version:	2.11.3
 Release:	3
 Group:		Development/Ruby
 License:	GPLv2
-URL:		http://thoughtbot.com/community/
+URL:		https://thoughtbot.com/community/
 Source0:	http://rubygems.org/gems/%{rbname}-%{version}.gem
 BuildRequires:	rubygems 
 BuildArch:	noarch
